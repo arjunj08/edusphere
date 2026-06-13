@@ -1,0 +1,58 @@
+[
+  {
+    "id": "co-aurora",
+    "name": "Aurora Systems",
+    "role": "SDE-1",
+    "blurb": "Product engineering · mid-size · strong DSA bar",
+    "typicalHire": { "dsa": 85, "mock": 78, "resume": 72, "projects": 70, "systemDesign": 60 }
+  },
+  {
+    "id": "co-novaml",
+    "name": "NovaML",
+    "role": "ML Engineer",
+    "blurb": "Applied ML · research-leaning · portfolio matters",
+    "typicalHire": { "dsa": 76, "mock": 70, "resume": 75, "projects": 88, "systemDesign": 72 }
+  },
+  {
+    "id": "co-cobalt",
+    "name": "Cobalt Data",
+    "role": "Data Engineer",
+    "blurb": "Data platform · SQL + pipelines heavy",
+    "typicalHire": { "dsa": 72, "mock": 66, "resume": 70, "projects": 80, "systemDesign": 78 }
+  },
+  {
+    "id": "co-pixel",
+    "name": "Pixel Forge",
+    "role": "Frontend Engineer",
+    "blurb": "Design-systems product · UI depth valued",
+    "typicalHire": { "dsa": 66, "mock": 68, "resume": 80, "projects": 85, "systemDesign": 55 }
+  },
+  {
+    "id": "co-quanta",
+    "name": "Quanta Pay",
+    "role": "Backend Engineer",
+    "blurb": "Fintech · reliability + system design heavy",
+    "typicalHire": { "dsa": 80, "mock": 74, "resume": 72, "projects": 75, "systemDesign": 86 }
+  },
+  {
+    "id": "co-vertex",
+    "name": "Vertex Cloud",
+    "role": "SDE-1",
+    "blurb": "Infra · high DSA + system design bar",
+    "typicalHire": { "dsa": 88, "mock": 76, "resume": 70, "projects": 72, "systemDesign": 82 }
+  },
+  {
+    "id": "co-lumen",
+    "name": "Lumen Health",
+    "role": "ML Engineer",
+    "blurb": "Health ML · projects + communication valued",
+    "typicalHire": { "dsa": 70, "mock": 80, "resume": 78, "projects": 84, "systemDesign": 66 }
+  },
+  {
+    "id": "co-strato",
+    "name": "Strato Analytics",
+    "role": "Data Engineer",
+    "blurb": "Analytics · balanced generalist profile",
+    "typicalHire": { "dsa": 74, "mock": 70, "resume": 74, "projects": 76, "systemDesign": 74 }
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "intro": "Hi! We're thrilled to offer you the SDE-1 role. The package is ₹12 LPA base, joining next month. What do you think?",
+  "start": "n1",
+  "nodes": {
+    "n1": {
+      "recruiter": "We're offering ₹12 LPA base. Shall I send the paperwork?",
+      "choices": [
+        { "label": "Sounds great, I accept!", "next": "end_lowball", "tags": ["accepted_first"] },
+        { "label": "Thank you — I'm excited. Could we talk about the base? Based on my offers and the role's scope, I was hoping closer to ₹16 LPA.", "next": "n2", "tags": ["anchored", "justified", "collaborative"] },
+        { "label": "That's too low. I need more.", "next": "n2b", "tags": ["anchored", "blunt"] }
+      ]
+    },
+    "n2": {
+      "recruiter": "I appreciate the enthusiasm. ₹16 is above our band for this level — the most I can flex on base is ₹13.5. Can we make that work?",
+      "choices": [
+        { "label": "If base is capped, could we look at a joining bonus or an early review at 6 months to close the gap?", "next": "n3", "tags": ["creative", "collaborative"] },
+        { "label": "Okay, ₹13.5 is fine.", "next": "end_ok", "tags": ["settled_mid"] },
+        { "label": "No, it has to be ₹16.", "next": "n3b", "tags": ["rigid"] }
+      ]
+    },
+    "n2b": {
+      "recruiter": "I hear you. Help me make the case internally — what's driving the number?",
+      "choices": [
+        { "label": "I have a competing offer at ₹15.5 and my system-design scores are strong for this role.", "next": "n3", "tags": ["justified", "collaborative"] },
+        { "label": "It's just what I want.", "next": "end_weak", "tags": ["unjustified"] }
+      ]
+    },
+    "n3": {
+      "recruiter": "A ₹1L joining bonus plus a documented 6-month review is doable, landing you around ₹14.5 effective. Deal?",
+      "choices": [
+        { "label": "That works — thank you for partnering on it. Let's proceed.", "next": "end_win", "tags": ["closed_collaborative"] },
+        { "label": "Can we also lock the review criteria in writing?", "next": "end_win_plus", "tags": ["closed_collaborative", "secured_terms"] }
+      ]
+    },
+    "n3b": {
+      "recruiter": "I can't get to ₹16 at this level, and digging in here may stall things. Where can we find middle ground?",
+      "choices": [
+        { "label": "Fair — could a joining bonus bridge it instead?", "next": "n3", "tags": ["recovered", "creative"] },
+        { "label": "Then I'll have to decline.", "next": "end_walk", "tags": ["walked"] }
+      ]
+    },
+    "end_lowball": { "terminal": true, "title": "Accepted the first offer", "result": "low" },
+    "end_weak": { "terminal": true, "title": "Couldn't justify the ask", "result": "low" },
+    "end_ok": { "terminal": true, "title": "Settled at the mid-point", "result": "mid" },
+    "end_walk": { "terminal": true, "title": "Walked away early", "result": "mid" },
+    "end_win": { "terminal": true, "title": "Closed collaboratively above band", "result": "high" },
+    "end_win_plus": { "terminal": true, "title": "Closed above band with terms in writing", "result": "high" }
+  }
+}

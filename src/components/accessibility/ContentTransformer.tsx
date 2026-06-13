@@ -1,0 +1,173 @@
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { AudioLines, FileText, Network, Play, Subtitles, Volume2 } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { speak } from "@/lib/speech";
+
+/**
+ * FEATURE 1 — Adaptive Content Transformer.
+ * One source lesson, several parallel forms generated on demand (mocked here):
+ * audio narration, plain-language rewrite with inline definitions, structured
+ * concept cards, and captioned video with auto-notes. "One lesson, every
+ * learner." Demoed live on a Problem Bank entry.
+ */
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+type FormId = "audio" | "plain" | "concept" | "captioned";
+
+const FORMS: { id: FormId; icon: typeof FileText; label: string }[] = [
+  { id: "audio", icon: AudioLines, label: "Audio" },
+  { id: "plain", icon: FileText, label: "Plain language" },
+  { id: "concept", icon: Network, label: "Concept cards" },
+  { id: "captioned", icon: Subtitles, label: "Captioned video" },
+];
+
+const NARRATION =
+  "Binary search on a sorted array. Look at the middle element. If it matches, you are done. If your target is smaller, search the left half. If larger, search the right half. Each step removes half the remaining items, so the work is logarithmic.";
+
+export default function ContentTransformer({
+  defaultForm = "plain",
+}: {
+  defaultForm?: FormId;
+}) {
+  const [form, setForm] = useState<FormId>(defaultForm);
+
+  return (
+    <div className="rounded-2xl border border-line bg-white p-5 md:p-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <p className="font-mono text-[11px] uppercase tracking-wider text-accent">
+            ✦ Adaptive Content Transformer
+          </p>
+          <h3 className="mt-1 font-display text-lg font-medium">
+            Same lesson, delivered your way
+          </h3>
+        </div>
+        <div
+          role="tablist"
+          aria-label="Content format"
+          className="flex flex-wrap gap-1 rounded-full border border-line bg-paper p-1"
+        >
+          {FORMS.map((f) => {
+            const Icon = f.icon;
+            const active = form === f.id;
+            return (
+              <button
+                key={f.id}
+                role="tab"
+                aria-selected={active}
+                onClick={() => setForm(f.id)}
+                className={cn(
+                  "relative flex items-center gap-1.5 rounded-full px-3 py-1.5 font-mono text-xs transition-colors",
+                  active ? "text-ink" : "text-ink-soft hover:text-ink"
+                )}
+              >
+                {active && (
+                  <motion.span
+                    layoutId="transformer-pill"
+                    className="absolute inset-0 rounded-full border border-line bg-white shadow-sm"
+                    transition={{ type: "spring" as const, stiffness: 300, damping: 28 }}
+                  />
+                )}
+                <span className="relative flex items-center gap-1.5">
+                  <Icon size={13} />
+                  {f.label}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="mt-5 min-h-[180px]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={form}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.28, ease: EASE }}
+          >
+            {form === "audio" && (
+              <div className="flex flex-col items-center gap-4 py-4">
+                <div className="flex items-end gap-1" aria-hidden="true">
+                  {[12, 24, 16, 30, 22, 34, 18, 28, 14, 26, 20, 32].map((h, i) => (
+                    <span key={i} className="w-1.5 rounded-full bg-track/60" style={{ height: h }} />
+                  ))}
+                </div>
+                <button
+                  onClick={() => speak(NARRATION)}
+                  className="flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper"
+                >
+                  <Play size={14} /> Play narration
+                </button>
+                <p className="text-center text-sm leading-relaxed text-ink-soft">
+                  Clean narration with a logical reading order — headings,
+                  then steps, then the takeaway. Screen-reader friendly.
+                </p>
+              </div>
+            )}
+
+            {form === "plain" && (
+              <div className="text-[15px] leading-[1.9]">
+                <p>
+                  Binary search finds an item in a{" "}
+                  <span className="rounded bg-accent-soft px-1 font-mono text-[13px] text-accent">
+                    sorted list
+                  </span>{" "}
+                  (already in order). Check the middle. Too big? Look left. Too
+                  small? Look right. Repeat.
+                </p>
+                <p className="mt-3">
+                  Each check throws away half of what's left. That's why it's{" "}
+                  <span className="rounded bg-accent-soft px-1 font-mono text-[13px] text-accent">
+                    O(log n)
+                  </span>{" "}
+                  — the number of steps grows slowly even when the list grows
+                  fast.
+                </p>
+              </div>
+            )}
+
+            {form === "concept" && (
+              <div className="grid gap-3 sm:grid-cols-3">
+                {[
+                  { t: "Rule", d: "List is sorted. Compare the middle." },
+                  { t: "Move", d: "Smaller → left half. Larger → right half." },
+                  { t: "Cost", d: "Half removed each step → O(log n)." },
+                ].map((c, i) => (
+                  <div key={i} className="rounded-xl border border-line bg-paper p-4">
+                    <span className="font-mono text-[11px] uppercase tracking-wider text-accent">
+                      {i + 1} · {c.t}
+                    </span>
+                    <p className="mt-2 text-sm leading-relaxed">{c.d}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {form === "captioned" && (
+              <div className="mx-auto max-w-md">
+                <div className="overflow-hidden rounded-xl border border-line">
+                  <div className="flex h-32 items-center justify-center bg-[#EDEBE3]">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full border border-line bg-white">
+                      <Play size={18} className="ml-0.5 text-ink" />
+                    </span>
+                  </div>
+                  <div className="bg-ink px-4 py-2.5 text-center font-mono text-xs text-paper">
+                    "...each comparison removes half the remaining items..."
+                  </div>
+                </div>
+                <p className="mt-3 flex items-center justify-center gap-1.5 text-center font-mono text-[11px] text-ink-soft">
+                  <Volume2 size={12} /> Auto-notes generated after the clip ·
+                  captions on by default
+                </p>
+              </div>
+            )}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+}

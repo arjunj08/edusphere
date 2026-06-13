@@ -1,0 +1,1362 @@
+[
+  {
+    "id": "tw-1",
+    "role": "Data Engineer",
+    "startReadiness": 39,
+    "endReadiness": 58,
+    "startSkills": {
+      "dsa": 36,
+      "mock": 30,
+      "resume": 68,
+      "projects": 39,
+      "systemDesign": 24
+    },
+    "endSkills": {
+      "dsa": 66,
+      "mock": 40,
+      "resume": 77,
+      "projects": 66,
+      "systemDesign": 39
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "dsa_200",
+        "label": "Solved 200+ DSA problems"
+      },
+      {
+        "key": "daily_streak",
+        "label": "30+ day challenge streak"
+      },
+      {
+        "key": "two_projects",
+        "label": "Shipped 2 portfolio projects"
+      }
+    ]
+  },
+  {
+    "id": "tw-2",
+    "role": "SDE-1",
+    "startReadiness": 53,
+    "endReadiness": 76,
+    "startSkills": {
+      "dsa": 66,
+      "mock": 45,
+      "resume": 63,
+      "projects": 45,
+      "systemDesign": 48
+    },
+    "endSkills": {
+      "dsa": 78,
+      "mock": 82,
+      "resume": 87,
+      "projects": 64,
+      "systemDesign": 68
+    },
+    "placed": true,
+    "weeksToPlacement": 15,
+    "moves": [
+      {
+        "key": "daily_streak",
+        "label": "30+ day challenge streak"
+      },
+      {
+        "key": "mock_3wk",
+        "label": "3 mock interviews / week"
+      },
+      {
+        "key": "weekly_resume",
+        "label": "Iterated resume weekly"
+      }
+    ]
+  },
+  {
+    "id": "tw-3",
+    "role": "ML Engineer",
+    "startReadiness": 53,
+    "endReadiness": 73,
+    "startSkills": {
+      "dsa": 45,
+      "mock": 59,
+      "resume": 61,
+      "projects": 52,
+      "systemDesign": 46
+    },
+    "endSkills": {
+      "dsa": 62,
+      "mock": 96,
+      "resume": 79,
+      "projects": 72,
+      "systemDesign": 57
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "mock_3wk",
+        "label": "3 mock interviews / week"
+      },
+      {
+        "key": "daily_streak",
+        "label": "30+ day challenge streak"
+      }
+    ]
+  },
+  {
+    "id": "tw-4",
+    "role": "Frontend Engineer",
+    "startReadiness": 47,
+    "endReadiness": 67,
+    "startSkills": {
+      "dsa": 54,
+      "mock": 33,
+      "resume": 40,
+      "projects": 56,
+      "systemDesign": 51
+    },
+    "endSkills": {
+      "dsa": 90,
+      "mock": 47,
+      "resume": 64,
+      "projects": 75,
+      "systemDesign": 61
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "weekly_resume",
+        "label": "Iterated resume weekly"
+      },
+      {
+        "key": "dsa_200",
+        "label": "Solved 200+ DSA problems"
+      }
+    ]
+  },
+  {
+    "id": "tw-5",
+    "role": "Backend Engineer",
+    "startReadiness": 42,
+    "endReadiness": 64,
+    "startSkills": {
+      "dsa": 38,
+      "mock": 26,
+      "resume": 64,
+      "projects": 36,
+      "systemDesign": 47
+    },
+    "endSkills": {
+      "dsa": 73,
+      "mock": 40,
+      "resume": 76,
+      "projects": 47,
+      "systemDesign": 83
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "dsa_200",
+        "label": "Solved 200+ DSA problems"
+      },
+      {
+        "key": "sysdesign_mock",
+        "label": "1 system-design mock / week"
+      }
+    ]
+  },
+  {
+    "id": "tw-6",
+    "role": "SDE-1",
+    "startReadiness": 44,
+    "endReadiness": 60,
+    "startSkills": {
+      "dsa": 46,
+      "mock": 28,
+      "resume": 45,
+      "projects": 57,
+      "systemDesign": 42
+    },
+    "endSkills": {
+      "dsa": 54,
+      "mock": 41,
+      "resume": 55,
+      "projects": 79,
+      "systemDesign": 69
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "study_group",
+        "label": "Joined a study group"
+      },
+      {
+        "key": "sysdesign_mock",
+        "label": "1 system-design mock / week"
+      },
+      {
+        "key": "daily_streak",
+        "label": "30+ day challenge streak"
+      }
+    ]
+  },
+  {
+    "id": "tw-7",
+    "role": "Data Engineer",
+    "startReadiness": 41,
+    "endReadiness": 63,
+    "startSkills": {
+      "dsa": 57,
+      "mock": 25,
+      "resume": 52,
+      "projects": 48,
+      "systemDesign": 21
+    },
+    "endSkills": {
+      "dsa": 78,
+      "mock": 60,
+      "resume": 64,
+      "projects": 72,
+      "systemDesign": 40
+    },
+    "placed": true,
+    "weeksToPlacement": 18,
+    "moves": [
+      {
+        "key": "mock_3wk",
+        "label": "3 mock interviews / week"
+      },
+      {
+        "key": "study_group",
+        "label": "Joined a study group"
+      },
+      {
+        "key": "two_projects",
+        "label": "Shipped 2 portfolio projects"
+      }
+    ]
+  },
+  {
+    "id": "tw-8",
+    "role": "Data Engineer",
+    "startReadiness": 44,
+    "endReadiness": 64,
+    "startSkills": {
+      "dsa": 36,
+      "mock": 55,
+      "resume": 36,
+      "projects": 62,
+      "systemDesign": 30
+    },
+    "endSkills": {
+      "dsa": 66,
+      "mock": 70,
+      "resume": 50,
+      "projects": 97,
+      "systemDesign": 39
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "dsa_200",
+        "label": "Solved 200+ DSA problems"
+      },
+      {
+        "key": "two_projects",
+        "label": "Shipped 2 portfolio projects"
+      }
+    ]
+  },
+  {
+    "id": "tw-9",
+    "role": "Backend Engineer",
+    "startReadiness": 36,
+    "endReadiness": 60,
+    "startSkills": {
+      "dsa": 33,
+      "mock": 37,
+      "resume": 36,
+      "projects": 53,
+      "systemDesign": 22
+    },
+    "endSkills": {
+      "dsa": 47,
+      "mock": 70,
+      "resume": 55,
+      "projects": 73,
+      "systemDesign": 53
+    },
+    "placed": true,
+    "weeksToPlacement": 14,
+    "moves": [
+      {
+        "key": "mock_3wk",
+        "label": "3 mock interviews / week"
+      },
+      {
+        "key": "sysdesign_mock",
+        "label": "1 system-design mock / week"
+      }
+    ]
+  },
+  {
+    "id": "tw-10",
+    "role": "Frontend Engineer",
+    "startReadiness": 47,
+    "endReadiness": 65,
+    "startSkills": {
+      "dsa": 42,
+      "mock": 38,
+      "resume": 69,
+      "projects": 61,
+      "systemDesign": 25
+    },
+    "endSkills": {
+      "dsa": 53,
+      "mock": 51,
+      "resume": 79,
+      "projects": 87,
+      "systemDesign": 55
+    },
+    "placed": true,
+    "weeksToPlacement": 21,
+    "moves": [
+      {
+        "key": "two_projects",
+        "label": "Shipped 2 portfolio projects"
+      },
+      {
+        "key": "sysdesign_mock",
+        "label": "1 system-design mock / week"
+      }
+    ]
+  },
+  {
+    "id": "tw-11",
+    "role": "SDE-1",
+    "startReadiness": 37,
+    "endReadiness": 58,
+    "startSkills": {
+      "dsa": 43,
+      "mock": 40,
+      "resume": 35,
+      "projects": 36,
+      "systemDesign": 33
+    },
+    "endSkills": {
+      "dsa": 61,
+      "mock": 65,
+      "resume": 58,
+      "projects": 58,
+      "systemDesign": 49
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "mock_3wk",
+        "label": "3 mock interviews / week"
+      },
+      {
+        "key": "daily_streak",
+        "label": "30+ day challenge streak"
+      },
+      {
+        "key": "weekly_resume",
+        "label": "Iterated resume weekly"
+      }
+    ]
+  },
+  {
+    "id": "tw-12",
+    "role": "SDE-1",
+    "startReadiness": 41,
+    "endReadiness": 59,
+    "startSkills": {
+      "dsa": 56,
+      "mock": 32,
+      "resume": 36,
+      "projects": 29,
+      "systemDesign": 50
+    },
+    "endSkills": {
+      "dsa": 66,
+      "mock": 59,
+      "resume": 55,
+      "projects": 43,
+      "systemDesign": 72
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "daily_streak",
+        "label": "30+ day challenge streak"
+      },
+      {
+        "key": "mock_3wk",
+        "label": "3 mock interviews / week"
+      }
+    ]
+  },
+  {
+    "id": "tw-13",
+    "role": "ML Engineer",
+    "startReadiness": 37,
+    "endReadiness": 60,
+    "startSkills": {
+      "dsa": 30,
+      "mock": 36,
+      "resume": 48,
+      "projects": 45,
+      "systemDesign": 28
+    },
+    "endSkills": {
+      "dsa": 58,
+      "mock": 56,
+      "resume": 70,
+      "projects": 65,
+      "systemDesign": 49
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "dsa_200",
+        "label": "Solved 200+ DSA problems"
+      },
+      {
+        "key": "daily_streak",
+        "label": "30+ day challenge streak"
+      }
+    ]
+  },
+  {
+    "id": "tw-14",
+    "role": "Data Engineer",
+    "startReadiness": 43,
+    "endReadiness": 63,
+    "startSkills": {
+      "dsa": 40,
+      "mock": 36,
+      "resume": 50,
+      "projects": 60,
+      "systemDesign": 30
+    },
+    "endSkills": {
+      "dsa": 56,
+      "mock": 57,
+      "resume": 58,
+      "projects": 79,
+      "systemDesign": 66
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "daily_streak",
+        "label": "30+ day challenge streak"
+      },
+      {
+        "key": "sysdesign_mock",
+        "label": "1 system-design mock / week"
+      }
+    ]
+  },
+  {
+    "id": "tw-15",
+    "role": "SDE-1",
+    "startReadiness": 47,
+    "endReadiness": 73,
+    "startSkills": {
+      "dsa": 48,
+      "mock": 41,
+      "resume": 63,
+      "projects": 61,
+      "systemDesign": 23
+    },
+    "endSkills": {
+      "dsa": 69,
+      "mock": 79,
+      "resume": 84,
+      "projects": 78,
+      "systemDesign": 57
+    },
+    "placed": true,
+    "weeksToPlacement": 10,
+    "moves": [
+      {
+        "key": "mock_3wk",
+        "label": "3 mock interviews / week"
+      },
+      {
+        "key": "sysdesign_mock",
+        "label": "1 system-design mock / week"
+      }
+    ]
+  },
+  {
+    "id": "tw-16",
+    "role": "Backend Engineer",
+    "startReadiness": 49,
+    "endReadiness": 73,
+    "startSkills": {
+      "dsa": 57,
+      "mock": 46,
+      "resume": 49,
+      "projects": 59,
+      "systemDesign": 34
+    },
+    "endSkills": {
+      "dsa": 90,
+      "mock": 81,
+      "resume": 75,
+      "projects": 70,
+      "systemDesign": 50
+    },
+    "placed": true,
+    "weeksToPlacement": 15,
+    "moves": [
+      {
+        "key": "dsa_200",
+        "label": "Solved 200+ DSA problems"
+      },
+      {
+        "key": "mock_3wk",
+        "label": "3 mock interviews / week"
+      },
+      {
+        "key": "weekly_resume",
+        "label": "Iterated resume weekly"
+      }
+    ]
+  },
+  {
+    "id": "tw-17",
+    "role": "Backend Engineer",
+    "startReadiness": 45,
+    "endReadiness": 63,
+    "startSkills": {
+      "dsa": 33,
+      "mock": 59,
+      "resume": 41,
+      "projects": 40,
+      "systemDesign": 52
+    },
+    "endSkills": {
+      "dsa": 55,
+      "mock": 79,
+      "resume": 73,
+      "projects": 49,
+      "systemDesign": 61
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "weekly_resume",
+        "label": "Iterated resume weekly"
+      },
+      {
+        "key": "study_group",
+        "label": "Joined a study group"
+      }
+    ]
+  },
+  {
+    "id": "tw-18",
+    "role": "Backend Engineer",
+    "startReadiness": 49,
+    "endReadiness": 70,
+    "startSkills": {
+      "dsa": 38,
+      "mock": 55,
+      "resume": 66,
+      "projects": 38,
+      "systemDesign": 49
+    },
+    "endSkills": {
+      "dsa": 47,
+      "mock": 70,
+      "resume": 95,
+      "projects": 57,
+      "systemDesign": 82
+    },
+    "placed": true,
+    "weeksToPlacement": 17,
+    "moves": [
+      {
+        "key": "weekly_resume",
+        "label": "Iterated resume weekly"
+      },
+      {
+        "key": "study_group",
+        "label": "Joined a study group"
+      },
+      {
+        "key": "sysdesign_mock",
+        "label": "1 system-design mock / week"
+      }
+    ]
+  },
+  {
+    "id": "tw-19",
+    "role": "Backend Engineer",
+    "startReadiness": 50,
+    "endReadiness": 68,
+    "startSkills": {
+      "dsa": 42,
+      "mock": 59,
+      "resume": 49,
+      "projects": 52,
+      "systemDesign": 49
+    },
+    "endSkills": {
+      "dsa": 54,
+      "mock": 80,
+      "resume": 81,
+      "projects": 65,
+      "systemDesign": 58
+    },
+    "placed": true,
+    "weeksToPlacement": 16,
+    "moves": [
+      {
+        "key": "weekly_resume",
+        "label": "Iterated resume weekly"
+      },
+      {
+        "key": "daily_streak",
+        "label": "30+ day challenge streak"
+      }
+    ]
+  },
+  {
+    "id": "tw-20",
+    "role": "SDE-1",
+    "startReadiness": 45,
+    "endReadiness": 70,
+    "startSkills": {
+      "dsa": 49,
+      "mock": 35,
+      "resume": 46,
+      "projects": 56,
+      "systemDesign": 39
+    },
+    "endSkills": {
+      "dsa": 83,
+      "mock": 65,
+      "resume": 61,
+      "projects": 87,
+      "systemDesign": 52
+    },
+    "placed": true,
+    "weeksToPlacement": 15,
+    "moves": [
+      {
+        "key": "dsa_200",
+        "label": "Solved 200+ DSA problems"
+      },
+      {
+        "key": "mock_3wk",
+        "label": "3 mock interviews / week"
+      },
+      {
+        "key": "two_projects",
+        "label": "Shipped 2 portfolio projects"
+      }
+    ]
+  },
+  {
+    "id": "tw-21",
+    "role": "ML Engineer",
+    "startReadiness": 47,
+    "endReadiness": 65,
+    "startSkills": {
+      "dsa": 67,
+      "mock": 57,
+      "resume": 51,
+      "projects": 33,
+      "systemDesign": 26
+    },
+    "endSkills": {
+      "dsa": 98,
+      "mock": 71,
+      "resume": 65,
+      "projects": 48,
+      "systemDesign": 42
+    },
+    "placed": true,
+    "weeksToPlacement": 14,
+    "moves": [
+      {
+        "key": "daily_streak",
+        "label": "30+ day challenge streak"
+      },
+      {
+        "key": "dsa_200",
+        "label": "Solved 200+ DSA problems"
+      },
+      {
+        "key": "study_group",
+        "label": "Joined a study group"
+      }
+    ]
+  },
+  {
+    "id": "tw-22",
+    "role": "SDE-1",
+    "startReadiness": 52,
+    "endReadiness": 75,
+    "startSkills": {
+      "dsa": 55,
+      "mock": 54,
+      "resume": 62,
+      "projects": 49,
+      "systemDesign": 41
+    },
+    "endSkills": {
+      "dsa": 79,
+      "mock": 85,
+      "resume": 91,
+      "projects": 58,
+      "systemDesign": 61
+    },
+    "placed": true,
+    "weeksToPlacement": 19,
+    "moves": [
+      {
+        "key": "mock_3wk",
+        "label": "3 mock interviews / week"
+      },
+      {
+        "key": "dsa_200",
+        "label": "Solved 200+ DSA problems"
+      },
+      {
+        "key": "weekly_resume",
+        "label": "Iterated resume weekly"
+      }
+    ]
+  },
+  {
+    "id": "tw-23",
+    "role": "Data Engineer",
+    "startReadiness": 48,
+    "endReadiness": 67,
+    "startSkills": {
+      "dsa": 68,
+      "mock": 51,
+      "resume": 64,
+      "projects": 32,
+      "systemDesign": 23
+    },
+    "endSkills": {
+      "dsa": 89,
+      "mock": 83,
+      "resume": 76,
+      "projects": 41,
+      "systemDesign": 44
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "daily_streak",
+        "label": "30+ day challenge streak"
+      },
+      {
+        "key": "mock_3wk",
+        "label": "3 mock interviews / week"
+      }
+    ]
+  },
+  {
+    "id": "tw-24",
+    "role": "Frontend Engineer",
+    "startReadiness": 43,
+    "endReadiness": 67,
+    "startSkills": {
+      "dsa": 33,
+      "mock": 40,
+      "resume": 57,
+      "projects": 40,
+      "systemDesign": 46
+    },
+    "endSkills": {
+      "dsa": 69,
+      "mock": 57,
+      "resume": 79,
+      "projects": 63,
+      "systemDesign": 68
+    },
+    "placed": true,
+    "weeksToPlacement": 13,
+    "moves": [
+      {
+        "key": "dsa_200",
+        "label": "Solved 200+ DSA problems"
+      },
+      {
+        "key": "two_projects",
+        "label": "Shipped 2 portfolio projects"
+      }
+    ]
+  },
+  {
+    "id": "tw-25",
+    "role": "ML Engineer",
+    "startReadiness": 47,
+    "endReadiness": 62,
+    "startSkills": {
+      "dsa": 68,
+      "mock": 35,
+      "resume": 44,
+      "projects": 63,
+      "systemDesign": 23
+    },
+    "endSkills": {
+      "dsa": 82,
+      "mock": 52,
+      "resume": 52,
+      "projects": 86,
+      "systemDesign": 36
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "daily_streak",
+        "label": "30+ day challenge streak"
+      },
+      {
+        "key": "two_projects",
+        "label": "Shipped 2 portfolio projects"
+      }
+    ]
+  },
+  {
+    "id": "tw-26",
+    "role": "Backend Engineer",
+    "startReadiness": 50,
+    "endReadiness": 76,
+    "startSkills": {
+      "dsa": 41,
+      "mock": 45,
+      "resume": 61,
+      "projects": 62,
+      "systemDesign": 40
+    },
+    "endSkills": {
+      "dsa": 71,
+      "mock": 83,
+      "resume": 82,
+      "projects": 89,
+      "systemDesign": 56
+    },
+    "placed": true,
+    "weeksToPlacement": 13,
+    "moves": [
+      {
+        "key": "mock_3wk",
+        "label": "3 mock interviews / week"
+      },
+      {
+        "key": "two_projects",
+        "label": "Shipped 2 portfolio projects"
+      },
+      {
+        "key": "dsa_200",
+        "label": "Solved 200+ DSA problems"
+      }
+    ]
+  },
+  {
+    "id": "tw-27",
+    "role": "SDE-1",
+    "startReadiness": 46,
+    "endReadiness": 65,
+    "startSkills": {
+      "dsa": 67,
+      "mock": 33,
+      "resume": 40,
+      "projects": 35,
+      "systemDesign": 55
+    },
+    "endSkills": {
+      "dsa": 83,
+      "mock": 51,
+      "resume": 59,
+      "projects": 57,
+      "systemDesign": 77
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "two_projects",
+        "label": "Shipped 2 portfolio projects"
+      },
+      {
+        "key": "study_group",
+        "label": "Joined a study group"
+      }
+    ]
+  },
+  {
+    "id": "tw-28",
+    "role": "ML Engineer",
+    "startReadiness": 41,
+    "endReadiness": 68,
+    "startSkills": {
+      "dsa": 31,
+      "mock": 33,
+      "resume": 65,
+      "projects": 34,
+      "systemDesign": 42
+    },
+    "endSkills": {
+      "dsa": 65,
+      "mock": 55,
+      "resume": 84,
+      "projects": 54,
+      "systemDesign": 82
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "dsa_200",
+        "label": "Solved 200+ DSA problems"
+      },
+      {
+        "key": "study_group",
+        "label": "Joined a study group"
+      },
+      {
+        "key": "sysdesign_mock",
+        "label": "1 system-design mock / week"
+      }
+    ]
+  },
+  {
+    "id": "tw-29",
+    "role": "Frontend Engineer",
+    "startReadiness": 41,
+    "endReadiness": 64,
+    "startSkills": {
+      "dsa": 45,
+      "mock": 27,
+      "resume": 54,
+      "projects": 50,
+      "systemDesign": 28
+    },
+    "endSkills": {
+      "dsa": 63,
+      "mock": 61,
+      "resume": 70,
+      "projects": 60,
+      "systemDesign": 66
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "mock_3wk",
+        "label": "3 mock interviews / week"
+      },
+      {
+        "key": "sysdesign_mock",
+        "label": "1 system-design mock / week"
+      }
+    ]
+  },
+  {
+    "id": "tw-30",
+    "role": "Frontend Engineer",
+    "startReadiness": 45,
+    "endReadiness": 66,
+    "startSkills": {
+      "dsa": 59,
+      "mock": 26,
+      "resume": 45,
+      "projects": 50,
+      "systemDesign": 45
+    },
+    "endSkills": {
+      "dsa": 69,
+      "mock": 47,
+      "resume": 57,
+      "projects": 73,
+      "systemDesign": 83
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "daily_streak",
+        "label": "30+ day challenge streak"
+      },
+      {
+        "key": "sysdesign_mock",
+        "label": "1 system-design mock / week"
+      },
+      {
+        "key": "two_projects",
+        "label": "Shipped 2 portfolio projects"
+      }
+    ]
+  },
+  {
+    "id": "tw-31",
+    "role": "Frontend Engineer",
+    "startReadiness": 48,
+    "endReadiness": 71,
+    "startSkills": {
+      "dsa": 65,
+      "mock": 31,
+      "resume": 49,
+      "projects": 57,
+      "systemDesign": 38
+    },
+    "endSkills": {
+      "dsa": 87,
+      "mock": 69,
+      "resume": 58,
+      "projects": 71,
+      "systemDesign": 72
+    },
+    "placed": true,
+    "weeksToPlacement": 11,
+    "moves": [
+      {
+        "key": "sysdesign_mock",
+        "label": "1 system-design mock / week"
+      },
+      {
+        "key": "dsa_200",
+        "label": "Solved 200+ DSA problems"
+      },
+      {
+        "key": "mock_3wk",
+        "label": "3 mock interviews / week"
+      }
+    ]
+  },
+  {
+    "id": "tw-32",
+    "role": "ML Engineer",
+    "startReadiness": 43,
+    "endReadiness": 65,
+    "startSkills": {
+      "dsa": 31,
+      "mock": 31,
+      "resume": 60,
+      "projects": 53,
+      "systemDesign": 42
+    },
+    "endSkills": {
+      "dsa": 44,
+      "mock": 59,
+      "resume": 74,
+      "projects": 85,
+      "systemDesign": 61
+    },
+    "placed": true,
+    "weeksToPlacement": 11,
+    "moves": [
+      {
+        "key": "mock_3wk",
+        "label": "3 mock interviews / week"
+      },
+      {
+        "key": "two_projects",
+        "label": "Shipped 2 portfolio projects"
+      }
+    ]
+  },
+  {
+    "id": "tw-33",
+    "role": "SDE-1",
+    "startReadiness": 46,
+    "endReadiness": 67,
+    "startSkills": {
+      "dsa": 53,
+      "mock": 31,
+      "resume": 44,
+      "projects": 52,
+      "systemDesign": 52
+    },
+    "endSkills": {
+      "dsa": 77,
+      "mock": 46,
+      "resume": 56,
+      "projects": 74,
+      "systemDesign": 82
+    },
+    "placed": true,
+    "weeksToPlacement": 11,
+    "moves": [
+      {
+        "key": "daily_streak",
+        "label": "30+ day challenge streak"
+      },
+      {
+        "key": "sysdesign_mock",
+        "label": "1 system-design mock / week"
+      },
+      {
+        "key": "dsa_200",
+        "label": "Solved 200+ DSA problems"
+      }
+    ]
+  },
+  {
+    "id": "tw-34",
+    "role": "Backend Engineer",
+    "startReadiness": 48,
+    "endReadiness": 70,
+    "startSkills": {
+      "dsa": 44,
+      "mock": 50,
+      "resume": 65,
+      "projects": 33,
+      "systemDesign": 48
+    },
+    "endSkills": {
+      "dsa": 60,
+      "mock": 69,
+      "resume": 83,
+      "projects": 56,
+      "systemDesign": 83
+    },
+    "placed": true,
+    "weeksToPlacement": 14,
+    "moves": [
+      {
+        "key": "sysdesign_mock",
+        "label": "1 system-design mock / week"
+      },
+      {
+        "key": "two_projects",
+        "label": "Shipped 2 portfolio projects"
+      }
+    ]
+  },
+  {
+    "id": "tw-35",
+    "role": "Frontend Engineer",
+    "startReadiness": 48,
+    "endReadiness": 70,
+    "startSkills": {
+      "dsa": 57,
+      "mock": 32,
+      "resume": 52,
+      "projects": 48,
+      "systemDesign": 49
+    },
+    "endSkills": {
+      "dsa": 66,
+      "mock": 69,
+      "resume": 72,
+      "projects": 74,
+      "systemDesign": 68
+    },
+    "placed": true,
+    "weeksToPlacement": 17,
+    "moves": [
+      {
+        "key": "two_projects",
+        "label": "Shipped 2 portfolio projects"
+      },
+      {
+        "key": "daily_streak",
+        "label": "30+ day challenge streak"
+      },
+      {
+        "key": "mock_3wk",
+        "label": "3 mock interviews / week"
+      }
+    ]
+  },
+  {
+    "id": "tw-36",
+    "role": "Backend Engineer",
+    "startReadiness": 51,
+    "endReadiness": 71,
+    "startSkills": {
+      "dsa": 67,
+      "mock": 56,
+      "resume": 57,
+      "projects": 37,
+      "systemDesign": 38
+    },
+    "endSkills": {
+      "dsa": 82,
+      "mock": 77,
+      "resume": 82,
+      "projects": 47,
+      "systemDesign": 68
+    },
+    "placed": true,
+    "weeksToPlacement": 15,
+    "moves": [
+      {
+        "key": "weekly_resume",
+        "label": "Iterated resume weekly"
+      },
+      {
+        "key": "study_group",
+        "label": "Joined a study group"
+      },
+      {
+        "key": "sysdesign_mock",
+        "label": "1 system-design mock / week"
+      }
+    ]
+  },
+  {
+    "id": "tw-37",
+    "role": "Frontend Engineer",
+    "startReadiness": 54,
+    "endReadiness": 73,
+    "startSkills": {
+      "dsa": 41,
+      "mock": 60,
+      "resume": 59,
+      "projects": 64,
+      "systemDesign": 45
+    },
+    "endSkills": {
+      "dsa": 56,
+      "mock": 96,
+      "resume": 77,
+      "projects": 80,
+      "systemDesign": 55
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "study_group",
+        "label": "Joined a study group"
+      },
+      {
+        "key": "mock_3wk",
+        "label": "3 mock interviews / week"
+      }
+    ]
+  },
+  {
+    "id": "tw-38",
+    "role": "Backend Engineer",
+    "startReadiness": 41,
+    "endReadiness": 61,
+    "startSkills": {
+      "dsa": 56,
+      "mock": 30,
+      "resume": 43,
+      "projects": 41,
+      "systemDesign": 34
+    },
+    "endSkills": {
+      "dsa": 73,
+      "mock": 45,
+      "resume": 70,
+      "projects": 54,
+      "systemDesign": 63
+    },
+    "placed": true,
+    "weeksToPlacement": 10,
+    "moves": [
+      {
+        "key": "sysdesign_mock",
+        "label": "1 system-design mock / week"
+      },
+      {
+        "key": "weekly_resume",
+        "label": "Iterated resume weekly"
+      },
+      {
+        "key": "daily_streak",
+        "label": "30+ day challenge streak"
+      }
+    ]
+  },
+  {
+    "id": "tw-39",
+    "role": "Backend Engineer",
+    "startReadiness": 46,
+    "endReadiness": 73,
+    "startSkills": {
+      "dsa": 31,
+      "mock": 48,
+      "resume": 62,
+      "projects": 44,
+      "systemDesign": 47
+    },
+    "endSkills": {
+      "dsa": 52,
+      "mock": 74,
+      "resume": 92,
+      "projects": 61,
+      "systemDesign": 86
+    },
+    "placed": true,
+    "weeksToPlacement": 20,
+    "moves": [
+      {
+        "key": "sysdesign_mock",
+        "label": "1 system-design mock / week"
+      },
+      {
+        "key": "mock_3wk",
+        "label": "3 mock interviews / week"
+      },
+      {
+        "key": "weekly_resume",
+        "label": "Iterated resume weekly"
+      }
+    ]
+  },
+  {
+    "id": "tw-40",
+    "role": "SDE-1",
+    "startReadiness": 43,
+    "endReadiness": 63,
+    "startSkills": {
+      "dsa": 34,
+      "mock": 29,
+      "resume": 42,
+      "projects": 59,
+      "systemDesign": 52
+    },
+    "endSkills": {
+      "dsa": 48,
+      "mock": 40,
+      "resume": 64,
+      "projects": 78,
+      "systemDesign": 84
+    },
+    "placed": false,
+    "weeksToPlacement": null,
+    "moves": [
+      {
+        "key": "weekly_resume",
+        "label": "Iterated resume weekly"
+      },
+      {
+        "key": "sysdesign_mock",
+        "label": "1 system-design mock / week"
+      },
+      {
+        "key": "daily_streak",
+        "label": "30+ day challenge streak"
+      }
+    ]
+  }
+]
