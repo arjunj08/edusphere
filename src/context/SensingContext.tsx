@@ -11,17 +11,18 @@ interface SensingContextValue {
   setSensorEnabled: (on: boolean) => void;
   load: Load;
   source: SignalSource;
+  stream: MediaStream | null;
 }
 
 const SensingContext = createContext<SensingContextValue | null>(null);
 
 export function SensingProvider({ children }: { children: ReactNode }) {
   const [sensorEnabled, setSensorEnabled] = useState(false);
-  const { load, source } = useAttentionSignal(sensorEnabled);
+  const { load, source, stream } = useAttentionSignal(sensorEnabled);
 
   const value = useMemo<SensingContextValue>(
-    () => ({ sensorEnabled, setSensorEnabled, load, source }),
-    [sensorEnabled, load, source]
+    () => ({ sensorEnabled, setSensorEnabled, load, source, stream }),
+    [sensorEnabled, load, source, stream]
   );
 
   return <SensingContext.Provider value={value}>{children}</SensingContext.Provider>;

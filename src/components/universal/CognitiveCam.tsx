@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Camera, CameraOff, Coffee, Lock, X } from "lucide-react";
+import { Camera, CameraOff, Coffee, Lock, VideoOff, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useSensing } from "@/context/SensingContext";
 
@@ -49,6 +49,63 @@ export function CognitiveCamToggle() {
         </span>
       )}
     </button>
+  );
+}
+
+/** Floating live camera preview shown while the Cognitive Cam is on, so you can
+ *  see the on-device feed actually running. */
+export function CognitiveCamPreview() {
+  const { sensorEnabled, load, source, stream, setSensorEnabled } = useSensing();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (v && stream) {
+      v.srcObject = stream;
+      v.play().catch(() => {});
+    }
+  }, [stream]);
+
+  const style = LOAD_STYLE[load];
+
+  return (
+    <AnimatePresence>
+      {sensorEnabled && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 8 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.9, y: 8 }}
+          className="fixed right-4 top-[4.25rem] z-40 w-44 overflow-hidden rounded-2xl border border-line bg-ink shadow-[0_18px_40px_-18px_rgba(16,27,45,0.45)]"
+        >
+          <div className="relative aspect-[4/3] bg-ink">
+            {stream ? (
+              <video ref={videoRef} muted playsInline className="h-full w-full -scale-x-100 object-cover" />
+            ) : (
+              <div className="flex h-full flex-col items-center justify-center gap-1 px-3 text-center">
+                <VideoOff size={18} className="text-paper/60" />
+                <p className="font-mono text-[10px] text-paper/60">
+                  {source === "simulated" ? "Camera blocked — simulated signal" : "Starting camera…"}
+                </p>
+              </div>
+            )}
+            <span className="absolute left-2 top-2 flex items-center gap-1 rounded-full bg-ink/70 px-2 py-0.5 font-mono text-[9px] font-medium text-paper">
+              <span className="block h-1.5 w-1.5 rounded-full" style={{ backgroundColor: style.color }} />
+              {style.label}
+            </span>
+            <button
+              onClick={() => setSensorEnabled(false)}
+              aria-label="Turn off Cognitive Cam"
+              className="absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-ink/70 text-paper hover:bg-ink"
+            >
+              <X size={11} />
+            </button>
+          </div>
+          <p className="flex items-center gap-1 px-2 py-1.5 font-mono text-[9px] text-ink-soft" style={{ background: "#fff" }}>
+            <Lock size={9} className="text-track" /> On-device · nothing uploaded
+          </p>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 

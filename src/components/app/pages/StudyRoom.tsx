@@ -23,12 +23,44 @@ export default function StudyRoom() {
   ]);
   const [draft, setDraft] = useState("");
   const [copied, setCopied] = useState(false);
+  const [camOn, setCamOn] = useState(false);
+  const [micOn, setMicOn] = useState(false);
+  const [camError, setCamError] = useState(false);
   const feedRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const streamRef = useRef<MediaStream | null>(null);
 
   useEffect(() => {
     const id = setInterval(() => setSeconds((s) => s + 1), 1000);
     return () => clearInterval(id);
   }, []);
+
+  // Stop the camera when leaving the room.
+  useEffect(() => () => streamRef.current?.getTracks().forEach((t) => t.stop()), []);
+
+  const toggleCam = async () => {
+    if (camOn) {
+      streamRef.current?.getTracks().forEach((t) => t.stop());
+      streamRef.current = null;
+      setCamOn(false);
+      return;
+    }
+    setCamError(false);
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: false });
+      streamRef.current = stream;
+      setCamOn(true);
+      // Attach after the tile renders.
+      requestAnimationFrame(() => {
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
+          videoRef.current.play().catch(() => {});
+        }
+      });
+    } catch {
+      setCamError(true);
+    }
+  };
 
   useEffect(() => {
     feedRef.current?.scrollTo({ top: feedRef.current.scrollHeight });
@@ -82,19 +114,39 @@ export default function StudyRoom() {
         <div className="space-y-5 lg:col-span-2">
           <div className="rounded-2xl border border-line bg-white p-5">
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {participants.map((p) => (
-                <div key={p.name} className="flex flex-col items-center rounded-xl border border-line bg-paper p-4">
-                  <span className={cn("flex h-12 w-12 items-center justify-center rounded-full font-display text-lg font-medium", p.role === "You" ? "bg-accent text-white" : "bg-[#EDEBE3] text-ink")}>
-                    {p.name[0].toUpperCase()}
-                  </span>
-                  <span className="mt-2 truncate font-mono text-[11px]">{p.name}</span>
-                  <span className="font-mono text-[10px] text-ink-soft">{p.role}</span>
-                </div>
-              ))}
+              {participants.map((p) => {
+                const isYou = p.role === "You";
+                return (
+                  <div key={p.name} className="flex flex-col items-center rounded-xl border border-line bg-paper p-4">
+                    {isYou && camOn ? (
+                      <video ref={videoRef} muted playsInline className="h-12 w-12 -scale-x-100 rounded-full object-cover" />
+                    ) : (
+                      <span className={cn("flex h-12 w-12 items-center justify-center rounded-full font-display text-lg font-medium", isYou ? "bg-accent text-white" : "bg-[#EDEBE3] text-ink")}>
+                        {p.name[0].toUpperCase()}
+                      </span>
+                    )}
+                    <span className="mt-2 truncate font-mono text-[11px]">{p.name}</span>
+                    <span className="font-mono text-[10px] text-ink-soft">
+                      {isYou && camOn ? "Camera on" : p.role}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <button className="flex items-center gap-1.5 rounded-full bg-ink px-4 py-2 text-sm font-medium text-paper"><Mic size={14} /> Mic</button>
-              <button className="flex items-center gap-1.5 rounded-full border border-line px-4 py-2 text-sm font-medium hover:bg-paper"><Video size={14} /> Camera</button>
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              <button
+                onClick={() => setMicOn((m) => !m)}
+                className={cn("flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-colors", micOn ? "bg-ink text-paper" : "border border-line hover:bg-paper")}
+              >
+                <Mic size={14} /> Mic {micOn ? "on" : "off"}
+              </button>
+              <button
+                onClick={toggleCam}
+                className={cn("flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-colors", camOn ? "bg-ink text-paper" : "border border-line hover:bg-paper")}
+              >
+                <Video size={14} /> Camera {camOn ? "on" : "off"}
+              </button>
+              {camError && <span className="font-mono text-[11px] text-risk">Camera blocked — allow access in your browser.</span>}
               <button
                 onClick={() => navigate("/app/groups")}
                 className="ml-auto flex items-center gap-1.5 rounded-full bg-risk px-4 py-2 text-sm font-medium text-white"

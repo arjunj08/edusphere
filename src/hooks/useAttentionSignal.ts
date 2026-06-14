@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * On-device attention/strain proxy for the Cognitive Load Sensor.
+ * On-device attention/strain proxy for the Cognitive Cam.
  *
- * PRIVACY: when a camera is used, frames are analysed in-browser only via the
- * FaceDetector API — nothing is recorded, stored, or uploaded. The stream is
- * stopped the moment the sensor is turned off. If no camera or FaceDetector is
- * available, we fall back to a SIMULATED signal derived from time-on-page so
- * the feature is always demoable.
+ * PRIVACY: when a camera is used, frames are analysed in-browser only — nothing
+ * is recorded, stored, or uploaded, and the stream stops the moment the sensor
+ * is turned off. Where the experimental FaceDetector API exists we use real
+ * face-presence; otherwise the live camera still runs (so you can see it work)
+ * and the load estimate falls back to a time-on-screen heuristic. If the camera
+ * is unavailable or permission is denied, we degrade to a fully simulated
+ * signal so the feature is always demoable.
  */
 
 export type Load = "calm" | "focused" | "strained";
@@ -16,6 +18,8 @@ export type SignalSource = "camera" | "simulated" | "off";
 interface AttentionState {
   load: Load;
   source: SignalSource;
+  /** Live MediaStream when the camera is on, so the UI can show a preview. */
+  stream: MediaStream | null;
 }
 
 // FaceDetector is experimental and not in TS DOM libs; declare a minimal shape.
@@ -29,8 +33,7 @@ declare global {
 }
 
 export function useAttentionSignal(enabled: boolean): AttentionState {
-  const [state, setState] = useState<AttentionState>({ load: "calm", source: "off" });
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [state, setState] = useState<AttentionState>({ load: "calm", source: "off", stream: null });
   const streamRef = useRef<MediaStream | null>(null);
   const missesRef = useRef(0);
 
@@ -38,68 +41,82 @@ export function useAttentionSignal(enabled: boolean): AttentionState {
     if (!enabled) {
       streamRef.current?.getTracks().forEach((t) => t.stop());
       streamRef.current = null;
-      setState({ load: "calm", source: "off" });
+      setState({ load: "calm", source: "off", stream: null });
       return;
     }
 
     let cancelled = false;
     let interval: ReturnType<typeof setInterval> | null = null;
+    let video: HTMLVideoElement | null = null;
+    let detector: FaceDetectorLike | null = null;
     const startedAt = Date.now();
 
-    async function startCamera(): Promise<boolean> {
-      if (!window.FaceDetector || !navigator.mediaDevices?.getUserMedia) return false;
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { width: 160, height: 120 } });
-        if (cancelled) {
-          stream.getTracks().forEach((t) => t.stop());
-          return false;
-        }
-        streamRef.current = stream;
-        const video = document.createElement("video");
-        video.srcObject = stream;
-        video.muted = true;
-        await video.play();
-        videoRef.current = video;
-        const detector = new window.FaceDetector!();
+    async function start() {
+      let cameraOn = false;
 
-        interval = setInterval(async () => {
+      // Always try the camera when enabled — not gated on FaceDetector.
+      if (navigator.mediaDevices?.getUserMedia) {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({
+            video: { width: 320, height: 240, facingMode: "user" },
+          });
+          if (cancelled) {
+            stream.getTracks().forEach((t) => t.stop());
+            return;
+          }
+          streamRef.current = stream;
+          cameraOn = true;
+          video = document.createElement("video");
+          video.srcObject = stream;
+          video.muted = true;
+          video.playsInline = true;
+          await video.play().catch(() => {});
+          if (window.FaceDetector) {
+            try {
+              detector = new window.FaceDetector();
+            } catch {
+              detector = null;
+            }
+          }
+          setState({ load: "focused", source: "camera", stream });
+        } catch {
+          cameraOn = false;
+        }
+      }
+
+      interval = setInterval(async () => {
+        if (detector && video) {
+          // Real face-presence detection.
           try {
             const faces = await detector.detect(video);
-            // Face present → focused; absent repeatedly → strained (looked away).
             if (faces.length > 0) {
               missesRef.current = 0;
-              setState({ load: "focused", source: "camera" });
+              setState((s) => ({ ...s, load: "focused", source: "camera" }));
             } else {
               missesRef.current += 1;
-              setState({
+              setState((s) => ({
+                ...s,
                 load: missesRef.current >= 3 ? "strained" : "focused",
                 source: "camera",
-              });
+              }));
             }
           } catch {
             /* transient detector error — ignore this tick */
           }
-        }, 1500);
-        return true;
-      } catch {
-        return false;
-      }
+        } else {
+          // Camera may still be live (preview works); estimate load from time.
+          const elapsed = (Date.now() - startedAt) / 1000;
+          const load: Load = elapsed > 40 ? "strained" : elapsed > 18 ? "focused" : "calm";
+          setState((s) => ({
+            ...s,
+            load,
+            source: cameraOn ? "camera" : "simulated",
+          }));
+        }
+      }, detector ? 1500 : 2000);
     }
 
-    function startSimulated() {
-      // Strain ramps the longer the user stays without the page changing.
-      // Activity (handled by the sensor component dispatching events) resets it.
-      interval = setInterval(() => {
-        const elapsed = (Date.now() - startedAt) / 1000;
-        const load: Load = elapsed > 40 ? "strained" : elapsed > 18 ? "focused" : "calm";
-        setState({ load, source: "simulated" });
-      }, 2000);
-    }
-
-    startCamera().then((ok) => {
-      if (cancelled) return;
-      if (!ok) startSimulated();
-    });
+    start();
 
     return () => {
       cancelled = true;

@@ -10,7 +10,7 @@ import { EDGE_FEATURES, FEATURES } from "@/services/features";
 import MentorDock from "@/components/app/MentorDock";
 import ReadinessCountdown from "@/components/universal/ReadinessCountdown";
 import AdaptSheet from "@/components/universal/AdaptSheet";
-import { BreakPrompt, CognitiveCamToggle } from "@/components/universal/CognitiveCam";
+import { BreakPrompt, CognitiveCamPreview, CognitiveCamToggle } from "@/components/universal/CognitiveCam";
 import ReadingSupport from "@/components/accessibility/ReadingSupport";
 import FocusSession from "@/components/accessibility/FocusSession";
 import VoiceNav from "@/components/accessibility/VoiceNav";
@@ -166,6 +166,7 @@ export default function AppShell() {
       {/* Ring 2 — available to every user, no preference needed */}
       <AdaptSheet />
       <BreakPrompt />
+      <CognitiveCamPreview />
 
       {/* Ring 3 — mount only when the matching onboarding flag is set; they stack */}
       {isSimplified && <ReadingSupport />}
