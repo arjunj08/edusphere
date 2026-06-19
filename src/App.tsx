@@ -11,6 +11,7 @@ import Fork from "@/components/onboarding/Fork";
 import Options from "@/components/onboarding/Options";
 import AppShell from "@/components/app/AppShell";
 import FacultyDashboard from "@/components/app/FacultyDashboard";
+import ParentDashboard from "@/components/app/ParentDashboard";
 import Dashboard from "@/components/app/pages/Dashboard";
 import ProblemBank from "@/components/app/pages/ProblemBank";
 import DailyChallenge from "@/components/app/pages/DailyChallenge";
@@ -145,6 +146,16 @@ function AppRoutes() {
           element={
             <ProtectedRoute role="faculty">
               <FacultyDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Parent / Guardian — consent-based, read-only progress + wellbeing */}
+        <Route
+          path="/parent"
+          element={
+            <ProtectedRoute role="guardian">
+              <ParentDashboard />
             </ProtectedRoute>
           }
         />

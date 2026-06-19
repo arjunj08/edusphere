@@ -27,6 +27,12 @@ export const STUDENT = {
   target: "ML Engineer",
   riskZone: "green" as Zone,
   riskLabel: "On track",
+  // Plain-language wellbeing/progress signals — also surfaced (read-only) to a
+  // consenting parent/guardian. Never raw surveillance, never exact per-test grades.
+  attendancePct: 92,
+  assignmentsOnTime: 4,
+  assignmentsTotal: 5,
+  streakDays: 6,
   skills: [
     { label: "DSA progress", pct: 82, zone: "green" },
     { label: "Mock interviews", pct: 64, zone: "amber" },

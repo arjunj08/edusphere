@@ -1,10 +1,50 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAccessibility } from "@/context/AccessibilityContext";
 import type { AccessibilityFlag } from "@/services/auth";
 import { ACCESSIBILITY_OPTIONS } from "@/services/accessibility";
+import {
+  getShareSettings,
+  setShareSettings,
+  SHARE_OPTIONS,
+  type ShareSettings,
+} from "@/services/parentShare";
 import PageHeading from "@/components/app/PageHeading";
+
+/** Reusable pill switch matching the "Use standard experience" toggle. */
+function Switch({
+  checked,
+  onChange,
+  label,
+}: {
+  checked: boolean;
+  onChange: () => void;
+  label: string;
+}) {
+  return (
+    <button
+      role="switch"
+      aria-checked={checked}
+      aria-label={label}
+      onClick={onChange}
+      className={cn(
+        "relative h-7 w-12 shrink-0 rounded-full transition-colors",
+        checked ? "bg-track" : "bg-line"
+      )}
+    >
+      <motion.span
+        layout
+        transition={{ type: "spring" as const, stiffness: 500, damping: 32 }}
+        className={cn(
+          "absolute top-1 h-5 w-5 rounded-full bg-white shadow",
+          checked ? "left-6" : "left-1"
+        )}
+      />
+    </button>
+  );
+}
 
 /**
  * Settings — edit preferences anytime. The "Use standard experience" toggle
@@ -14,6 +54,14 @@ import PageHeading from "@/components/app/PageHeading";
 export default function Settings() {
   const { savedFlags, useStandard, track, setFlags, setTrack, setUseStandard } =
     useAccessibility();
+
+  const [share, setShare] = useState<ShareSettings>(getShareSettings);
+
+  const toggleShare = (key: keyof ShareSettings) => {
+    const next = { ...share, [key]: !share[key] };
+    setShare(next);
+    setShareSettings(next);
+  };
 
   const toggleFlag = (flag: AccessibilityFlag) => {
     const next = savedFlags.includes(flag)
@@ -85,6 +133,38 @@ export default function Settings() {
         <p className="font-mono text-[11px] leading-relaxed text-ink-soft">
           Current track: <span className="text-ink">{track}</span>. Adaptations stack — pick as many as fit.
         </p>
+
+        {/* Consent — what a linked parent/guardian may see. You're always in control. */}
+        <section className="mt-8 rounded-2xl border border-line bg-white p-5">
+          <div className="flex items-center gap-2">
+            <ShieldCheck size={18} className="text-track" />
+            <h2 className="font-display text-lg font-medium">Share with parent / guardian</h2>
+          </div>
+          <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+            You choose what a parent or guardian can see. They only ever get a supportive
+            summary — never your private messages, your exact grades on every test, or any
+            personal content. Turn anything off anytime; it disappears from their view instantly.
+          </p>
+
+          <div className="mt-4 space-y-3" role="group" aria-label="What to share with a guardian">
+            {SHARE_OPTIONS.map((option) => (
+              <div
+                key={option.key}
+                className="flex items-center justify-between gap-4 rounded-xl border border-line bg-paper p-4"
+              >
+                <div>
+                  <p className="text-[15px] font-medium">{option.label}</p>
+                  <p className="mt-0.5 text-sm text-ink-soft">{option.detail}</p>
+                </div>
+                <Switch
+                  checked={share[option.key]}
+                  onChange={() => toggleShare(option.key)}
+                  label={`Share ${option.label.toLowerCase()} with a guardian`}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );

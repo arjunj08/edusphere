@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { GraduationCap, Users } from "lucide-react";
+import { GraduationCap, Users, HeartHandshake } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import type { Profile, Role } from "@/services/auth";
 import PageTransition from "@/components/app/PageTransition";
@@ -10,6 +10,7 @@ type Mode = "signup" | "login";
 
 function destinationFor(profile: Profile) {
   if (profile.role === "faculty") return "/faculty";
+  if (profile.role === "guardian") return "/parent";
   return profile.onboarded ? "/app/dashboard" : "/onboarding";
 }
 
@@ -45,9 +46,30 @@ export default function AuthPage() {
     // Read the fresh profile destination from the inputs we just submitted:
     // faculty go straight to triage, students onboard once.
     if (mode === "signup") {
-      navigate(role === "faculty" ? "/faculty" : "/onboarding");
+      navigate(
+        role === "faculty" ? "/faculty" : role === "guardian" ? "/parent" : "/onboarding"
+      );
     }
     // On login the <Navigate> above takes over after profile state updates.
+  };
+
+  // One-click demo: sign into (or create) a guardian account and jump to /parent.
+  const viewAsParent = async () => {
+    setBusy(true);
+    setError(null);
+    const creds = {
+      name: "Aarav's Parent",
+      email: "parent.demo@edusphere.ai",
+      password: "demo1234",
+    };
+    let err = await signIn({ email: creds.email, password: creds.password });
+    if (err) err = await signUp({ ...creds, role: "guardian" });
+    setBusy(false);
+    if (err) {
+      setError(err);
+      return;
+    }
+    navigate("/parent");
   };
 
   return (
@@ -159,11 +181,12 @@ export default function AuthPage() {
                 <legend className="mb-1.5 block font-mono text-xs text-ink-soft">
                   I am a
                 </legend>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-3 gap-2">
                   {(
                     [
                       { value: "student", label: "Student", icon: GraduationCap },
                       { value: "faculty", label: "Faculty", icon: Users },
+                      { value: "guardian", label: "Parent", icon: HeartHandshake },
                     ] as const
                   ).map((option) => {
                     const Icon = option.icon;
@@ -210,6 +233,20 @@ export default function AuthPage() {
                   : "Log in"}
             </motion.button>
           </form>
+
+          {/* Frictionless demo entry to the consent-based parent/guardian view. */}
+          <div className="mt-4 flex items-center justify-center gap-2 text-sm">
+            <span className="text-ink-soft">Just exploring?</span>
+            <button
+              type="button"
+              onClick={viewAsParent}
+              disabled={busy}
+              className="flex items-center gap-1.5 font-medium text-track underline-offset-4 hover:underline disabled:opacity-60"
+            >
+              <HeartHandshake size={14} />
+              View as Parent
+            </button>
+          </div>
         </div>
       </main>
     </PageTransition>

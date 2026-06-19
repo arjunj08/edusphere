@@ -15,9 +15,13 @@ export default function ProtectedRoute({
   if (loading) return null;
   if (!profile) return <Navigate to="/auth" replace />;
   if (role && profile.role !== role) {
-    return (
-      <Navigate to={profile.role === "faculty" ? "/faculty" : "/app/dashboard"} replace />
-    );
+    const home =
+      profile.role === "faculty"
+        ? "/faculty"
+        : profile.role === "guardian"
+          ? "/parent"
+          : "/app/dashboard";
+    return <Navigate to={home} replace />;
   }
   return <>{children}</>;
 }

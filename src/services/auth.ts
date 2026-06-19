@@ -1,7 +1,7 @@
 // localStorage-backed mock auth, shaped like the Supabase client API so the
 // real backend can be swapped in behind these functions without touching UI.
 
-export type Role = "student" | "faculty";
+export type Role = "student" | "faculty" | "guardian";
 
 export type Track = "standard" | "accessibility";
 
@@ -101,7 +101,8 @@ export async function signUp(input: {
     track: "standard",
     accessibilityProfile: [],
     passport: DEFAULT_PASSPORT.map((a) => ({ ...a })),
-    onboarded: input.role === "faculty",
+    // Only students go through onboarding; faculty and guardians land directly.
+    onboarded: input.role !== "student",
     useStandardExperience: false,
   };
   users[email] = { profile, password: input.password };
